@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
-var maxSubArray = function (nums) {
+var maxSubArray_firstAccepted = function (nums) {
   let acc = 0;
   const max_acc = {};
   max_acc[-1] = 0;
@@ -29,3 +29,22 @@ console.log(maxSubArray([8, -19, 5, -4, 20]));
 
 // Submission link:
 // https://leetcode.com/problems/maximum-subarray/submissions/1672040750/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function (nums) {
+  let acc = 0;
+  let max_sum = nums[0];
+
+  for (let i = 0; i < nums.length; i++) {
+    acc = acc + nums[i] > nums[i] ? acc + nums[i] : nums[i];
+    max_sum = acc > max_sum ? acc : max_sum;
+  }
+
+  return max_sum;
+};
+
+// Submission link:
+// https://leetcode.com/problems/maximum-subarray/submissions/1673098524/
